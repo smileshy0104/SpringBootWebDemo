@@ -2,6 +2,7 @@ package com.example.springbootwebdemo.mapper;
 
 import com.example.springbootwebdemo.pojo.Dept;
 import com.example.springbootwebdemo.pojo.Emp;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -26,4 +27,7 @@ public interface EmpMapper {
 //    @Select("select * from emp")
     public List<Emp> listNew(String name, Short gender, LocalDate begin, LocalDate end);
 
+
+    //通过id删除Emp
+    void deleteEmpByID(List<Integer> ids);
 }

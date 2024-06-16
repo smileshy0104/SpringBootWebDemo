@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.springbootwebdemo.mapper.EmpMapper">
     <!--批量删除员工 (1, 2, 3)-->
-    <delete id="delete">
+    <delete id="deleteEmpByID">
         delete
         from emp
         where id in

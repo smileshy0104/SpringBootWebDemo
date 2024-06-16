@@ -5,11 +5,10 @@ import com.example.springbootwebdemo.pojo.Result;
 import com.example.springbootwebdemo.service.EmpService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 //员工管理控制器
 @RestController
@@ -40,5 +39,12 @@ public class EmpController {
         //调用service分页查询
         PageBean pageBean = empService.page(page,pageSize,name,gender,begin,end);
         return Result.success(pageBean);
+    }
+
+    //批量删除
+    @DeleteMapping("/emp/{ids}")
+    public Result delete(@PathVariable List<Integer> ids){
+        empService.deleteEmpByID(ids);
+        return Result.success();
     }
 }
