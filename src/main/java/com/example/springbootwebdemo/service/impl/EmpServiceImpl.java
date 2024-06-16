@@ -4,10 +4,13 @@ import com.example.springbootwebdemo.mapper.EmpMapper;
 import com.example.springbootwebdemo.pojo.Emp;
 import com.example.springbootwebdemo.pojo.PageBean;
 import com.example.springbootwebdemo.service.EmpService;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 //员工业务实现类
@@ -27,9 +30,21 @@ public class EmpServiceImpl implements EmpService {
         List<Emp> empList = empMapper.list(start, pageSize);
 
         //3、封装PageBean对象
+        // 注意: 这里需要将empList作为pageBean的一个属性, 否则前端无法获取数据
         PageBean pageBean = new PageBean(count , empList);
         return pageBean;
     }
 
+    @Override
+    public PageBean page(Integer page, Integer pageSize, String name, Short gender, LocalDate begin, LocalDate end) {
+        //1. 设置分页参数
+        PageHelper.startPage(page,pageSize);
 
+        //2. 执行查询
+        List<Emp> empList = empMapper.listNew(name, gender, begin, end);
+        Page<Emp> p = (Page<Emp>) empList;
+        //3. 封装PageBean对象
+        PageBean pageBean = new PageBean(p.getTotal(), p.getResult());
+        return pageBean;
+    }
 }
