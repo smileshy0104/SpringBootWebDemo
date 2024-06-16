@@ -33,6 +33,7 @@ public class LoginController {
         if(loginEmp !=null ){
             //自定义信息
             Map<String , Object> claims = new HashMap<>();
+            // 存放内容进header
             claims.put("id", loginEmp.getId());
             claims.put("username",loginEmp.getUsername());
             claims.put("name",loginEmp.getName());
