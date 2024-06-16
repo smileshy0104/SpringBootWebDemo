@@ -1,6 +1,7 @@
 package com.example.springbootwebdemo.service;
 
 import com.example.springbootwebdemo.pojo.Dept;
+import com.example.springbootwebdemo.pojo.Emp;
 
 import java.util.List;
 

@@ -5,6 +5,7 @@ import com.example.springbootwebdemo.pojo.PageBean;
 import com.example.springbootwebdemo.pojo.Result;
 import com.example.springbootwebdemo.service.EmpService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
@@ -51,6 +52,7 @@ public class EmpController {
         return Result.success();
     }
 
+    //新增
     @PostMapping("/emp")
     public Result save(@RequestBody Emp emp){
         //记录日志
@@ -58,6 +60,20 @@ public class EmpController {
         //调用业务层新增功能
         empService.save(emp);
         //响应
+        return Result.success();
+    }
+
+    //根据ID查询员工信息
+    @GetMapping("/emps/{id}")
+    public Result getById(@PathVariable Integer id){
+        Emp emp = empService.getById(id);
+        return Result.success(emp);
+    }
+
+    //修改员工
+    @PutMapping("/emps")
+    public Result update(@RequestBody Emp emp){
+        empService.update(emp);
         return Result.success();
     }
 }
