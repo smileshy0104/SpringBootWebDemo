@@ -1,5 +1,6 @@
 package com.example.springbootwebdemo.service;
 
+import com.example.springbootwebdemo.pojo.Emp;
 import com.example.springbootwebdemo.pojo.PageBean;
 
 import java.time.LocalDate;
@@ -27,4 +28,11 @@ public interface EmpService {
      * @param ids id集合
      */
     void deleteEmpByID(List<Integer> ids);
+
+
+    /**
+     * 保存员工信息
+     * @param emp
+     */
+    void save(Emp emp);
 }

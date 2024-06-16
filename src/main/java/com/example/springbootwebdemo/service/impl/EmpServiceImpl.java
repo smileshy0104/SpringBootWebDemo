@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 //员工业务实现类
@@ -51,5 +52,14 @@ public class EmpServiceImpl implements EmpService {
     @Override
     public void deleteEmpByID(List<Integer> ids) {
         empMapper.deleteEmpByID(ids);
+    }
+
+    @Override
+    public void save(Emp emp) {
+        //补全数据
+        emp.setCreateTime(LocalDateTime.now());
+        emp.setUpdateTime(LocalDateTime.now());
+        //调用添加方法
+        empMapper.insert(emp);
     }
 }

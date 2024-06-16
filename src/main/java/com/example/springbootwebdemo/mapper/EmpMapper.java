@@ -3,6 +3,7 @@ package com.example.springbootwebdemo.mapper;
 import com.example.springbootwebdemo.pojo.Dept;
 import com.example.springbootwebdemo.pojo.Emp;
 import org.apache.ibatis.annotations.Delete;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -30,4 +31,9 @@ public interface EmpMapper {
 
     //通过id删除Emp
     void deleteEmpByID(List<Integer> ids);
+
+    //新增员工
+    @Insert("insert into emp (username, name, gender, image, job, entrydate, dept_id, create_time, update_time) " +
+            "values (#{username}, #{name}, #{gender}, #{image}, #{job}, #{entrydate}, #{deptId}, #{createTime}, #{updateTime});")
+    void insert(Emp emp);
 }
