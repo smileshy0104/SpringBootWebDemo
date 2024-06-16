@@ -11,10 +11,10 @@ import java.util.UUID;
 
 @Component
 public class AliOSSUtils {
-    private String endpoint = "https://oss-cn-shanghai.aliyuncs.com";
-    private String accessKeyId = "LTAI5t9MZK8iq5T2Av5GLDxX";
-    private String accessKeySecret = "C0IrHzKZGKqU8S7YQcevcotD3Zd5Tc";
-    private String bucketName = "web-framework01";
+    private String endpoint = "11111111111";
+    private String accessKeyId = "11111111111";
+    private String accessKeySecret = "1111111111111";
+    private String bucketName = "11111111111111111";
 
     /**
      * 实现上传图片到OSS
