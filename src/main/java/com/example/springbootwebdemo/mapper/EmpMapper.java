@@ -47,4 +47,10 @@ public interface EmpMapper {
 
     //修改员工信息
     public void update(Emp emp);
+
+
+    @Select("select id, username, password, name, gender, image, job, entrydate, dept_id, create_time, update_time " +
+            "from emp " +
+            "where username=#{username} and password =#{password}")
+    public Emp getByUsernameAndPassword(Emp emp);
 }

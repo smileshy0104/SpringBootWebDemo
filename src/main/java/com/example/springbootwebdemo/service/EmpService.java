@@ -46,4 +46,12 @@ public interface EmpService {
 
     //修改员工信息
     public void update(Emp emp);
+
+
+    /**
+     * 用户登录
+     * @param emp
+     * @return
+     */
+    public Emp login(Emp emp);
 }
